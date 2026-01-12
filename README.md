@@ -1,6 +1,6 @@
 # geo-intel-offline
 
-[![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Development Status](https://img.shields.io/badge/status-production--ready-brightgreen.svg)](https://pypi.org/project/geo-intel-offline/)
 

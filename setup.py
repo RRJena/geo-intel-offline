@@ -25,7 +25,7 @@ setup(
     },
     include_package_data=True,
     zip_safe=False,  # Data files need to be extracted for loading
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=[
         # No external dependencies - pure Python
     ],
