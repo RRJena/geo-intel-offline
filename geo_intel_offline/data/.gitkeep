@@ -1,0 +1,3 @@
+# Data directory
+# Place geohash_index.json, polygons.json, and metadata.json here
+# Or use data_builder.py to generate them from source GeoJSON

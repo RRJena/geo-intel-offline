@@ -1,0 +1,30 @@
+# Include README and documentation
+include README.md
+include ARCHITECTURE.md
+include TEST_RESULTS.md
+include LICENSE
+
+# Include package data (only compressed data files for distribution)
+recursive-include geo_intel_offline/data *.json.gz
+# Exclude uncompressed files (moved to data_dev/ for development)
+prune geo_intel_offline/data_dev
+recursive-exclude geo_intel_offline/data *.json
+
+# Exclude development files
+exclude .gitignore
+exclude .git
+exclude *.pyc
+exclude __pycache__
+exclude *.pyo
+exclude .DS_Store
+exclude .pytest_cache
+exclude .coverage
+exclude htmlcov
+exclude .mypy_cache
+exclude .ruff_cache
+
+# Exclude source data and build artifacts
+exclude data_sources/*
+exclude build/*
+exclude dist/*
+exclude *.egg-info
