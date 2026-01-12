@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geo-intel-offline"
-version = "1.0.0"
+version = "1.0.1"
 description = "Production-ready, offline geo-intelligence library for resolving latitude/longitude to country, ISO codes, continent, and timezone information"
 readme = "README.md"
 requires-python = ">=3.8"
