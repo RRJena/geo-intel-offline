@@ -314,3 +314,261 @@ Generated: 1768255796.2820175
 - Each point is resolved and checked against expected country
 - Accuracy = (Passed / Total) × 100%
 
+| 1 | Indonesia | ID | IDN | Asia | ✅ | ✅ | ✅ |
+| 2 | Malaysia | MY | MYS | Asia | ✅ | ✅ | ✅ |
+| 3 | Chile | CL | CHL | South America | ✅ | ✅ | ✅ |
+| 4 | Bolivia | BO | BOL | South America | ✅ | ✅ | ✅ |
+| 5 | Peru | PE | PER | South America | ✅ | ✅ | ✅ |
+| 6 | Argentina | AR | ARG | South America | ✅ | ✅ | ✅ |
+| 7 | Dhekelia | -99 | -99 | Asia | ✅ | - | - |
+| 8 | Cyprus | CY | CYP | Asia | ✅ | ✅ | ✅ |
+| 9 | India | IN | IND | Asia | ✅ | ✅ | ✅ |
+| 10 | China | CN | CHN | Asia | ✅ | ✅ | ✅ |
+| 11 | Israel | IL | ISR | Asia | ✅ | ✅ | ✅ |
+| 12 | Palestine | PS | PSE | Asia | ✅ | ✅ | ✅ |
+| 13 | Lebanon | LB | LBN | Asia | ✅ | ✅ | ✅ |
+| 14 | Ethiopia | ET | ETH | Africa | ✅ | ✅ | ✅ |
+| 15 | S. Sudan | SS | SSD | Africa | ✅ | ✅ | ✅ |
+| 16 | Somalia | SO | SOM | Africa | ✅ | ✅ | ✅ |
+| 17 | Kenya | KE | KEN | Africa | ✅ | ✅ | ✅ |
+| 18 | Malawi | MW | MWI | Africa | ✅ | ✅ | ✅ |
+| 19 | Tanzania | TZ | TZA | Africa | ✅ | ✅ | ✅ |
+| 20 | Syria | SY | SYR | Asia | ✅ | ✅ | ✅ |
+| 21 | Somaliland | -99 | -99 | Africa | ✅ | - | - |
+| 22 | France | -99 | -99 | Europe | ✅ | - | - |
+| 23 | Suriname | SR | SUR | South America | ✅ | ✅ | ✅ |
+| 24 | Guyana | GY | GUY | South America | ✅ | ✅ | ✅ |
+| 25 | South Korea | KR | KOR | Asia | ✅ | ✅ | ✅ |
+| 26 | North Korea | KP | PRK | Asia | ✅ | ✅ | ✅ |
+| 27 | Morocco | MA | MAR | Africa | ✅ | ✅ | ✅ |
+| 28 | W. Sahara | EH | ESH | Africa | ✅ | ✅ | ✅ |
+| 29 | Costa Rica | CR | CRI | North America | ✅ | ✅ | ✅ |
+| 30 | Nicaragua | NI | NIC | North America | ✅ | ✅ | ✅ |
+| 31 | Congo | CG | COG | Africa | ✅ | ✅ | ✅ |
+| 32 | Dem. Rep. Congo | CD | COD | Africa | ✅ | ✅ | ✅ |
+| 33 | Bhutan | BT | BTN | Asia | ✅ | ✅ | ✅ |
+| 34 | Ukraine | UA | UKR | Europe | ✅ | ✅ | ✅ |
+| 35 | Belarus | BY | BLR | Europe | ✅ | ✅ | ✅ |
+| 36 | Namibia | NA | NAM | Africa | ✅ | ✅ | ✅ |
+| 37 | South Africa | ZA | ZAF | Africa | ✅ | ✅ | ✅ |
+| 38 | St-Martin | MF | MAF | North America | ✅ | ✅ | ✅ |
+| 39 | Sint Maarten | SX | SXM | North America | ✅ | ✅ | ✅ |
+| 40 | Oman | OM | OMN | Asia | ✅ | ✅ | ✅ |
+| 41 | Uzbekistan | UZ | UZB | Asia | ✅ | ✅ | ✅ |
+| 42 | Kazakhstan | KZ | KAZ | Asia | ✅ | ✅ | ✅ |
+| 43 | Tajikistan | TJ | TJK | Asia | ✅ | ✅ | ✅ |
+| 44 | Lithuania | LT | LTU | Europe | ✅ | ✅ | ✅ |
+| 45 | Brazil | BR | BRA | South America | ✅ | ✅ | ✅ |
+| 46 | Uruguay | UY | URY | South America | ✅ | ✅ | ✅ |
+| 47 | Mongolia | MN | MNG | Asia | ✅ | ✅ | ✅ |
+| 48 | Russia | RU | RUS | Europe | ✅ | ✅ | ✅ |
+| 49 | Czechia | CZ | CZE | Europe | ✅ | ✅ | ✅ |
+| 50 | Germany | DE | DEU | Europe | ✅ | ✅ | ✅ |
+| 51 | Estonia | EE | EST | Europe | ✅ | ✅ | ✅ |
+| 52 | Latvia | LV | LVA | Europe | ✅ | ✅ | ✅ |
+| 53 | Norway | -99 | -99 | Europe | ✅ | - | - |
+| 54 | Sweden | SE | SWE | Europe | ✅ | ✅ | ✅ |
+| 55 | Finland | FI | FIN | Europe | ✅ | ✅ | ✅ |
+| 56 | Vietnam | VN | VNM | Asia | ✅ | ✅ | ✅ |
+| 57 | Cambodia | KH | KHM | Asia | ✅ | ✅ | ✅ |
+| 58 | Luxembourg | LU | LUX | Europe | ✅ | ✅ | ✅ |
+| 59 | United Arab Emirates | AE | ARE | Asia | ✅ | ✅ | ✅ |
+| 60 | Belgium | BE | BEL | Europe | ✅ | ✅ | ✅ |
+| 61 | Georgia | GE | GEO | Asia | ✅ | ✅ | ✅ |
+| 62 | North Macedonia | MK | MKD | Europe | ✅ | ✅ | ✅ |
+| 63 | Albania | AL | ALB | Europe | ✅ | ✅ | ✅ |
+| 64 | Azerbaijan | AZ | AZE | Asia | ✅ | ✅ | ✅ |
+| 65 | Kosovo | -99 | -99 | Europe | ✅ | - | - |
+| 66 | Turkey | TR | TUR | Asia | ✅ | ✅ | ✅ |
+| 67 | Spain | ES | ESP | Europe | ✅ | ✅ | ✅ |
+| 68 | Laos | LA | LAO | Asia | ✅ | ✅ | ✅ |
+| 69 | Kyrgyzstan | KG | KGZ | Asia | ✅ | ✅ | ✅ |
+| 70 | Armenia | AM | ARM | Asia | ✅ | ✅ | ✅ |
+| 71 | Denmark | DK | DNK | Europe | ✅ | ✅ | ✅ |
+| 72 | Libya | LY | LBY | Africa | ✅ | ✅ | ✅ |
+| 73 | Tunisia | TN | TUN | Africa | ✅ | ✅ | ✅ |
+| 74 | Romania | RO | ROU | Europe | ✅ | ✅ | ✅ |
+| 75 | Hungary | HU | HUN | Europe | ✅ | ✅ | ✅ |
+| 76 | Slovakia | SK | SVK | Europe | ✅ | ✅ | ✅ |
+| 77 | Poland | PL | POL | Europe | ✅ | ✅ | ✅ |
+| 78 | Ireland | IE | IRL | Europe | ✅ | ✅ | ✅ |
+| 79 | United Kingdom | GB | GBR | Europe | ✅ | ✅ | ✅ |
+| 80 | Greece | GR | GRC | Europe | ✅ | ✅ | ✅ |
+| 81 | Zambia | ZM | ZMB | Africa | ✅ | ✅ | ✅ |
+| 82 | Sierra Leone | SL | SLE | Africa | ✅ | ✅ | ✅ |
+| 83 | Guinea | GN | GIN | Africa | ✅ | ✅ | ✅ |
+| 84 | Liberia | LR | LBR | Africa | ✅ | ✅ | ✅ |
+| 85 | Central African Rep. | CF | CAF | Africa | ✅ | ✅ | ✅ |
+| 86 | Sudan | SD | SDN | Africa | ✅ | ✅ | ✅ |
+| 87 | Djibouti | DJ | DJI | Africa | ✅ | ✅ | ✅ |
+| 88 | Eritrea | ER | ERI | Africa | ✅ | ✅ | ✅ |
+| 89 | Austria | AT | AUT | Europe | ✅ | ✅ | ✅ |
+| 90 | Iraq | IQ | IRQ | Asia | ✅ | ✅ | ✅ |
+| 91 | Italy | IT | ITA | Europe | ✅ | ✅ | ✅ |
+| 92 | Switzerland | CH | CHE | Europe | ✅ | ✅ | ✅ |
+| 93 | Iran | IR | IRN | Asia | ✅ | ✅ | ✅ |
+| 94 | Netherlands | NL | NLD | Europe | ✅ | ✅ | ✅ |
+| 95 | Liechtenstein | LI | LIE | Europe | ✅ | ✅ | ✅ |
+| 96 | Côte d'Ivoire | CI | CIV | Africa | ✅ | ✅ | ✅ |
+| 97 | Serbia | RS | SRB | Europe | ✅ | ✅ | ✅ |
+| 98 | Mali | ML | MLI | Africa | ✅ | ✅ | ✅ |
+| 99 | Senegal | SN | SEN | Africa | ✅ | ✅ | ✅ |
+| 100 | Nigeria | NG | NGA | Africa | ✅ | ✅ | ✅ |
+| 101 | Benin | BJ | BEN | Africa | ✅ | ✅ | ✅ |
+| 102 | Angola | AO | AGO | Africa | ✅ | ✅ | ✅ |
+| 103 | Croatia | HR | HRV | Europe | ✅ | ✅ | ✅ |
+| 104 | Slovenia | SI | SVN | Europe | ✅ | ✅ | ✅ |
+| 105 | Qatar | QA | QAT | Asia | ✅ | ✅ | ✅ |
+| 106 | Saudi Arabia | SA | SAU | Asia | ✅ | ✅ | ✅ |
+| 107 | Botswana | BW | BWA | Africa | ✅ | ✅ | ✅ |
+| 108 | Zimbabwe | ZW | ZWE | Africa | ✅ | ✅ | ✅ |
+| 109 | Pakistan | PK | PAK | Asia | ✅ | ✅ | ✅ |
+| 110 | Bulgaria | BG | BGR | Europe | ✅ | ✅ | ✅ |
+| 111 | Thailand | TH | THA | Asia | ✅ | ✅ | ✅ |
+| 112 | San Marino | SM | SMR | Europe | ✅ | ✅ | ✅ |
+| 113 | Haiti | HT | HTI | North America | ✅ | ✅ | ✅ |
+| 114 | Dominican Rep. | DO | DOM | North America | ✅ | ✅ | ✅ |
+| 115 | Chad | TD | TCD | Africa | ✅ | ✅ | ✅ |
+| 116 | Kuwait | KW | KWT | Asia | ✅ | ✅ | ✅ |
+| 117 | El Salvador | SV | SLV | North America | ✅ | ✅ | ✅ |
+| 118 | Guatemala | GT | GTM | North America | ✅ | ✅ | ✅ |
+| 119 | Timor-Leste | TL | TLS | Asia | ✅ | ✅ | ✅ |
+| 120 | Brunei | BN | BRN | Asia | ✅ | ✅ | ✅ |
+| 121 | Monaco | MC | MCO | Europe | ✅ | ✅ | ✅ |
+| 122 | Algeria | DZ | DZA | Africa | ✅ | ✅ | ✅ |
+| 123 | Mozambique | MZ | MOZ | Africa | ✅ | ✅ | ✅ |
+| 124 | eSwatini | SZ | SWZ | Africa | ✅ | ✅ | ✅ |
+| 125 | Burundi | BI | BDI | Africa | ✅ | ✅ | ✅ |
+| 126 | Rwanda | RW | RWA | Africa | ✅ | ✅ | ✅ |
+| 127 | Myanmar | MM | MMR | Asia | ✅ | ✅ | ✅ |
+| 128 | Bangladesh | BD | BGD | Asia | ✅ | ✅ | ✅ |
+| 129 | Andorra | AD | AND | Europe | ✅ | ✅ | ✅ |
+| 130 | Afghanistan | AF | AFG | Asia | ✅ | ✅ | ✅ |
+| 131 | Montenegro | ME | MNE | Europe | ✅ | ✅ | ✅ |
+| 132 | Bosnia and Herz. | BA | BIH | Europe | ✅ | ✅ | ✅ |
+| 133 | Uganda | UG | UGA | Africa | ✅ | ✅ | ✅ |
+| 134 | USNB Guantanamo Bay | -99 | -99 | North America | ✅ | - | - |
+| 135 | Cuba | CU | CUB | North America | ✅ | ✅ | ✅ |
+| 136 | Honduras | HN | HND | North America | ✅ | ✅ | ✅ |
+| 137 | Ecuador | EC | ECU | South America | ✅ | ✅ | ✅ |
+| 138 | Colombia | CO | COL | South America | ✅ | ✅ | ✅ |
+| 139 | Paraguay | PY | PRY | South America | ✅ | ✅ | ✅ |
+| 140 | Brazilian I. | -99 | -99 | South America | ✅ | - | - |
+| 141 | Portugal | PT | PRT | Europe | ✅ | ✅ | ✅ |
+| 142 | Moldova | MD | MDA | Europe | ✅ | ✅ | ✅ |
+| 143 | Turkmenistan | TM | TKM | Asia | ✅ | ✅ | ✅ |
+| 144 | Jordan | JO | JOR | Asia | ✅ | ✅ | ✅ |
+| 145 | Nepal | NP | NPL | Asia | ✅ | ✅ | ✅ |
+| 146 | Lesotho | LS | LSO | Africa | ✅ | ✅ | ✅ |
+| 147 | Cameroon | CM | CMR | Africa | ✅ | ✅ | ✅ |
+| 148 | Gabon | GA | GAB | Africa | ✅ | ✅ | ✅ |
+| 149 | Niger | NE | NER | Africa | ✅ | ✅ | ✅ |
+| 150 | Burkina Faso | BF | BFA | Africa | ✅ | ✅ | ✅ |
+| 151 | Togo | TG | TGO | Africa | ✅ | ✅ | ✅ |
+| 152 | Ghana | GH | GHA | Africa | ✅ | ✅ | ✅ |
+| 153 | Guinea-Bissau | GW | GNB | Africa | ✅ | ✅ | ✅ |
+| 154 | Gibraltar | GI | GIB | Europe | ✅ | ✅ | ✅ |
+| 155 | United States of America | US | USA | North America | ✅ | ✅ | ✅ |
+| 156 | Canada | CA | CAN | North America | ✅ | ✅ | ✅ |
+| 157 | Mexico | MX | MEX | North America | ✅ | ✅ | ✅ |
+| 158 | Belize | BZ | BLZ | North America | ✅ | ✅ | ✅ |
+| 159 | Panama | PA | PAN | North America | ✅ | ✅ | ✅ |
+| 160 | Venezuela | VE | VEN | South America | ✅ | ✅ | ✅ |
+| 161 | Papua New Guinea | PG | PNG | Oceania | ✅ | ✅ | ✅ |
+| 162 | Egypt | EG | EGY | Africa | ✅ | ✅ | ✅ |
+| 163 | Yemen | YE | YEM | Asia | ✅ | ✅ | ✅ |
+| 164 | Mauritania | MR | MRT | Africa | ✅ | ✅ | ✅ |
+| 165 | Eq. Guinea | GQ | GNQ | Africa | ✅ | ✅ | ✅ |
+| 166 | Gambia | GM | GMB | Africa | ✅ | ✅ | ✅ |
+| 167 | Hong Kong | HK | HKG | Asia | ✅ | ✅ | ✅ |
+| 168 | Vatican | VA | VAT | Europe | ✅ | ✅ | ✅ |
+| 169 | N. Cyprus | -99 | -99 | Asia | ✅ | - | - |
+| 170 | Cyprus U.N. Buffer Zone | -99 | -99 | Asia | ✅ | - | - |
+| 171 | Siachen Glacier | -99 | -99 | Asia | ✅ | - | - |
+| 172 | Baikonur | -99 | -99 | Asia | ✅ | - | - |
+| 173 | Akrotiri | -99 | -99 | Asia | ✅ | - | - |
+| 174 | Southern Patagonian Ice Field | -99 | -99 | South America | ✅ | - | - |
+| 175 | Bir Tawil | -99 | -99 | Africa | ✅ | - | - |
+| 176 | Antarctica | AQ | ATA | Antarctica | ✅ | ✅ | ✅ |
+| 177 | Australia | AU | AUS | Oceania | ✅ | ✅ | ✅ |
+| 178 | Greenland | GL | GRL | North America | ✅ | ✅ | ✅ |
+| 179 | Fiji | FJ | FJI | Oceania | ✅ | ✅ | ✅ |
+| 180 | New Zealand | NZ | NZL | Oceania | ✅ | ✅ | ✅ |
+| 181 | New Caledonia | NC | NCL | Oceania | ✅ | ✅ | ✅ |
+| 182 | Madagascar | MG | MDG | Africa | ✅ | ✅ | ✅ |
+| 183 | Philippines | PH | PHL | Asia | ✅ | ✅ | ✅ |
+| 184 | Sri Lanka | LK | LKA | Asia | ✅ | ✅ | ✅ |
+| 185 | Curaçao | CW | CUW | North America | ✅ | ✅ | ✅ |
+| 186 | Aruba | AW | ABW | North America | ✅ | ✅ | ✅ |
+| 187 | Bahamas | BS | BHS | North America | ✅ | ✅ | ✅ |
+| 188 | Turks and Caicos Is. | TC | TCA | North America | ✅ | ✅ | ✅ |
+| 189 | Taiwan | CN-TW | TWN | Asia | ✅ | ✅ | ✅ |
+| 190 | Japan | JP | JPN | Asia | ✅ | ✅ | ✅ |
+| 191 | St. Pierre and Miquelon | PM | SPM | North America | ✅ | ✅ | ✅ |
+| 192 | Iceland | IS | ISL | Europe | ✅ | ✅ | ✅ |
+| 193 | Pitcairn Is. | PN | PCN | Oceania | ✅ | ✅ | ✅ |
+| 194 | Fr. Polynesia | PF | PYF | Oceania | ✅ | ✅ | ✅ |
+| 195 | Fr. S. Antarctic Lands | TF | ATF | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 196 | Seychelles | SC | SYC | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 197 | Kiribati | KI | KIR | Oceania | ✅ | ✅ | ✅ |
+| 198 | Marshall Is. | MH | MHL | Oceania | ✅ | ✅ | ✅ |
+| 199 | Trinidad and Tobago | TT | TTO | North America | ✅ | ✅ | ✅ |
+| 200 | Grenada | GD | GRD | North America | ✅ | ✅ | ✅ |
+| 201 | St. Vin. and Gren. | VC | VCT | North America | ✅ | ✅ | ✅ |
+| 202 | Barbados | BB | BRB | North America | ✅ | ✅ | ✅ |
+| 203 | Saint Lucia | LC | LCA | North America | ✅ | ✅ | ✅ |
+| 204 | Dominica | DM | DMA | North America | ✅ | ✅ | ✅ |
+| 205 | U.S. Minor Outlying Is. | UM | UMI | North America | ✅ | ✅ | ✅ |
+| 206 | Montserrat | MS | MSR | North America | ✅ | ✅ | ✅ |
+| 207 | Antigua and Barb. | AG | ATG | North America | ✅ | ✅ | ✅ |
+| 208 | St. Kitts and Nevis | KN | KNA | North America | ✅ | ✅ | ✅ |
+| 209 | U.S. Virgin Is. | VI | VIR | North America | ✅ | ✅ | ✅ |
+| 210 | St-Barthélemy | BL | BLM | North America | ✅ | ✅ | ✅ |
+| 211 | Puerto Rico | PR | PRI | North America | ✅ | ✅ | ✅ |
+| 212 | Anguilla | AI | AIA | North America | ✅ | ✅ | ✅ |
+| 213 | British Virgin Is. | VG | VGB | North America | ✅ | ✅ | ✅ |
+| 214 | Jamaica | JM | JAM | North America | ✅ | ✅ | ✅ |
+| 215 | Cayman Is. | KY | CYM | North America | ✅ | ✅ | ✅ |
+| 216 | Bermuda | BM | BMU | North America | ✅ | ✅ | ✅ |
+| 217 | Heard I. and McDonald Is. | HM | HMD | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 218 | Saint Helena | SH | SHN | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 219 | Mauritius | MU | MUS | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 220 | Comoros | KM | COM | Africa | ✅ | ✅ | ✅ |
+| 221 | São Tomé and Principe | ST | STP | Africa | ✅ | ✅ | ✅ |
+| 222 | Cabo Verde | CV | CPV | Africa | ✅ | ✅ | ✅ |
+| 223 | Malta | MT | MLT | Europe | ✅ | ✅ | ✅ |
+| 224 | Jersey | JE | JEY | Europe | ✅ | ✅ | ✅ |
+| 225 | Guernsey | GG | GGY | Europe | ✅ | ✅ | ✅ |
+| 226 | Isle of Man | IM | IMN | Europe | ✅ | ✅ | ✅ |
+| 227 | Åland | AX | ALA | Europe | ✅ | ✅ | ✅ |
+| 228 | Faeroe Is. | FO | FRO | Europe | ✅ | ✅ | ✅ |
+| 229 | Indian Ocean Ter. | -99 | -99 | Asia | ✅ | - | - |
+| 230 | Br. Indian Ocean Ter. | IO | IOT | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 231 | Singapore | SG | SGP | Asia | ✅ | ✅ | ✅ |
+| 232 | Norfolk Island | NF | NFK | Oceania | ✅ | ✅ | ✅ |
+| 233 | Cook Is. | CK | COK | Oceania | ✅ | ✅ | ✅ |
+| 234 | Tonga | TO | TON | Oceania | ✅ | ✅ | ✅ |
+| 235 | Wallis and Futuna Is. | WF | WLF | Oceania | ✅ | ✅ | ✅ |
+| 236 | Samoa | WS | WSM | Oceania | ✅ | ✅ | ✅ |
+| 237 | Solomon Is. | SB | SLB | Oceania | ✅ | ✅ | ✅ |
+| 238 | Tuvalu | TV | TUV | Oceania | ✅ | ✅ | ✅ |
+| 239 | Maldives | MV | MDV | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 240 | Nauru | NR | NRU | Oceania | ✅ | ✅ | ✅ |
+| 241 | Micronesia | FM | FSM | Oceania | ✅ | ✅ | ✅ |
+| 242 | S. Geo. and the Is. | GS | SGS | Seven seas (open oce | ✅ | ✅ | ✅ |
+| 243 | Falkland Is. | FK | FLK | South America | ✅ | ✅ | ✅ |
+| 244 | Vanuatu | VU | VUT | Oceania | ✅ | ✅ | ✅ |
+| 245 | Niue | NU | NIU | Oceania | ✅ | ✅ | ✅ |
+| 246 | American Samoa | AS | ASM | Oceania | ✅ | ✅ | ✅ |
+| 247 | Palau | PW | PLW | Oceania | ✅ | ✅ | ✅ |
+| 248 | Guam | GU | GUM | Oceania | ✅ | ✅ | ✅ |
+| 249 | N. Mariana Is. | MP | MNP | Oceania | ✅ | ✅ | ✅ |
+| 250 | Bahrain | BH | BHR | Asia | ✅ | ✅ | ✅ |
+| 251 | Coral Sea Is. | -99 | -99 | Oceania | ✅ | - | - |
+| 252 | Spratly Is. | -99 | -99 | Asia | ✅ | - | - |
+| 253 | Clipperton I. | -99 | -99 | Seven seas (open oce | ✅ | - | - |
+| 254 | Macao | MO | MAC | Asia | ✅ | ✅ | ✅ |
+| 255 | Ashmore and Cartier Is. | -99 | -99 | Oceania | ✅ | - | - |
+| 256 | Bajo Nuevo Bank | -99 | -99 | North America | ✅ | - | - |
+| 257 | Serranilla Bank | -99 | -99 | North America | ✅ | - | - |
+| 258 | Scarborough Reef | -99 | -99 | Asia | ✅ | - | - |
