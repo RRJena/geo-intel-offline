@@ -11,7 +11,7 @@ long_description = readme_file.read_text(encoding='utf-8') if readme_file.exists
 
 setup(
     name="geo-intel-offline",
-    version="1.0.1",
+    version="1.0.2",
     description="Production-ready, offline geo-intelligence library for resolving lat/lon to country, ISO codes, continent, and timezone",
     long_description=long_description,
     long_description_content_type="text/markdown",
