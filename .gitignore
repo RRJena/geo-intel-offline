@@ -60,4 +60,20 @@ geo_intel_offline/data_dev/
 .mypy_cache/
 .ruff_cache/
 *.log
-ARCHITECTURE.md
+
+# JavaScript library (separate repository)
+geo_intel_offline_java_script/
+
+# Confidential markdown files
+*confidential*.md
+*secret*.md
+*private*.md
+*CONFIDENTIAL*.md
+*SECRET*.md
+*PRIVATE*.md
+confidential/
+secret/
+private/
+*.confidential.md
+*.secret.md
+*.private.md

@@ -15,7 +15,8 @@ setup(
     description="Production-ready, offline geo-intelligence library for resolving lat/lon to country, ISO codes, continent, and timezone",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="Geo Intelligence Team",
+    author="Rakesh Ranjan Jena",
+    author_email="rakesh@rrjprince.com",
     url="https://github.com/RRJena/geo-intel-offline",
     packages=find_packages(),
     package_data={

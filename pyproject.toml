@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "GeoIntelLib Team"}
+    {name = "Rakesh Ranjan Jena", email = "rakesh@rrjprince.com"}
 ]
 keywords = ["geolocation", "geography", "country", "iso", "timezone", "offline", "geohash"]
 classifiers = [
