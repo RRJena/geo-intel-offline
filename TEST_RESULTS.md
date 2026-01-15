@@ -58,6 +58,31 @@ Generated: 1768255796.2820175
 | 23 | Suriname | SR | SUR | South America | 10 | 10 | 0 | **100.0%** |
 | 24 | Guyana | GY | GUY | South America | 10 | 10 | 0 | **100.0%** |
 | 25 | South Korea | KR | KOR | Asia | 10 | 10 | 0 | **100.0%** |
+| 1 | Indonesia | ID | IDN | Asia | ✅ | ✅ | ✅ |
+| 2 | Malaysia | MY | MYS | Asia | ✅ | ✅ | ✅ |
+| 3 | Chile | CL | CHL | South America | ✅ | ✅ | ✅ |
+| 4 | Bolivia | BO | BOL | South America | ✅ | ✅ | ✅ |
+| 5 | Peru | PE | PER | South America | ✅ | ✅ | ✅ |
+| 6 | Argentina | AR | ARG | South America | ✅ | ✅ | ✅ |
+| 7 | Dhekelia | -99 | -99 | Asia | ✅ | - | - |
+| 8 | Cyprus | CY | CYP | Asia | ✅ | ✅ | ✅ |
+| 9 | India | IN | IND | Asia | ✅ | ✅ | ✅ |
+| 10 | China | CN | CHN | Asia | ✅ | ✅ | ✅ |
+| 11 | Israel | IL | ISR | Asia | ✅ | ✅ | ✅ |
+| 12 | Palestine | PS | PSE | Asia | ✅ | ✅ | ✅ |
+| 13 | Lebanon | LB | LBN | Asia | ✅ | ✅ | ✅ |
+| 14 | Ethiopia | ET | ETH | Africa | ✅ | ✅ | ✅ |
+| 15 | S. Sudan | SS | SSD | Africa | ✅ | ✅ | ✅ |
+| 16 | Somalia | SO | SOM | Africa | ✅ | ✅ | ✅ |
+| 17 | Kenya | KE | KEN | Africa | ✅ | ✅ | ✅ |
+| 18 | Malawi | MW | MWI | Africa | ✅ | ✅ | ✅ |
+| 19 | Tanzania | TZ | TZA | Africa | ✅ | ✅ | ✅ |
+| 20 | Syria | SY | SYR | Asia | ✅ | ✅ | ✅ |
+| 21 | Somaliland | -99 | -99 | Africa | ✅ | - | - |
+| 22 | France | -99 | -99 | Europe | ✅ | - | - |
+| 23 | Suriname | SR | SUR | South America | ✅ | ✅ | ✅ |
+| 24 | Guyana | GY | GUY | South America | ✅ | ✅ | ✅ |
+| 25 | South Korea | KR | KOR | Asia | ✅ | ✅ | ✅ |
 | 26 | North Korea | KP | PRK | Asia | 10 | 10 | 0 | **100.0%** |
 | 27 | Morocco | MA | MAR | Africa | 10 | 10 | 0 | **100.0%** |
 | 28 | W. Sahara | EH | ESH | Africa | 7 | 7 | 0 | **100.0%** |
