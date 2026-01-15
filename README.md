@@ -6,6 +6,24 @@
 
 **Production-ready, offline geo-intelligence library** for resolving latitude/longitude coordinates to country, ISO codes, continent, timezone, and confidence scores. No API keys, no network requests, 100% deterministic.
 
+## 📋 Table of Contents
+
+1. [Why This Library Exists](#-why-this-library-exists)
+2. [Features](#-features)
+3. [Installation](#-installation)
+4. [Quick Start](#-quick-start)
+5. [API Reference](#-api-reference)
+6. [Examples](#-examples)
+7. [Use Cases](#-use-cases)
+8. [Advanced Usage](#-advanced-usage)
+9. [Performance & Accuracy](#-performance--accuracy)
+10. [Architecture](#-architecture)
+11. [Troubleshooting](#-troubleshooting)
+12. [Contributing](#-contributing)
+13. [Additional Resources](#-additional-resources)
+
+---
+
 ## 🌟 Why This Library Exists
 
 Every developer working with geolocation has faced the same frustration: you need to know what country a set of coordinates belongs to, but all the solutions either cost money, require API keys, need constant internet connectivity, or have restrictive rate limits. What if you're building an offline application? What if you're processing millions of records and API costs become prohibitive? What if you need deterministic results without external dependencies?
@@ -24,165 +42,9 @@ Whether you're building a mobile app that works offline, processing billions of 
 - 🔒 **Deterministic**: Same input always produces same output
 - 🗜️ **Optimized**: 66% size reduction with automatic compression
 - 🌍 **Comprehensive**: Supports all countries, continents, and territories
-- 🎨 **Clean API**: Simple, intuitive interface
+- 🎨 **Clean API**: Unified function for forward and reverse geocoding
 - 🔧 **No Dependencies**: Pure Python, no native extensions
 - 💰 **Free Forever**: No API costs, no rate limits, no hidden fees
-
-## 🎯 Where Can You Use This Library?
-
-### Mobile Applications
-**Offline-first apps** that need to identify user location even without internet connectivity. Perfect for travel apps, fitness trackers, or field data collection tools that work in remote areas.
-
-```python
-# Works offline - no internet needed!
-from geo_intel_offline import resolve
-
-def identify_user_country(lat, lon):
-    result = resolve(lat, lon)
-    return result.country  # Works even in airplane mode
-```
-
-### Data Processing & Analytics
-**Batch processing** of GPS logs, location data, or transaction records. Process millions of coordinates without API rate limits or costs.
-
-```python
-# Process millions of records - no rate limits!
-import pandas as pd
-from geo_intel_offline import resolve
-
-df = pd.read_csv('location_data.csv')
-df['country'] = df.apply(
-    lambda row: resolve(row['lat'], row['lon']).country,
-    axis=1
-)
-```
-
-### IoT & Edge Devices
-**Edge computing** applications where devices need geo-intelligence without cloud connectivity. Perfect for sensors, trackers, or embedded systems.
-
-```python
-# Runs on Raspberry Pi, microcontrollers, edge devices
-# No cloud dependency, minimal resources
-result = resolve(sensor_lat, sensor_lon)
-if result.country != 'US':
-    trigger_alert()
-```
-
-### API Alternatives & Rate Limit Avoidance
-**Replace expensive APIs** or bypass rate limits. Perfect for applications that need high throughput or want to reduce infrastructure costs. See the [Use Cases](#-use-cases) section below for detailed implementation examples.
-
-```python
-# Instead of: external_api.geocode(lat, lon)  # $0.005 per request
-# Use: resolve(lat, lon)  # FREE, unlimited, instant
-```
-
-### Geographic Data Enrichment
-**Enrich datasets** with country information for analysis, visualization, or machine learning. No need to maintain external API connections or handle failures. See the [Use Cases](#-use-cases) section below for pandas DataFrame examples.
-
-```python
-# Enrich logs, events, transactions with country data
-events = load_events_from_database()
-for event in events:
-    event['country'] = resolve(event['lat'], event['lon']).iso2
-    save_event(event)
-```
-
-### Location-Based Features
-**Add geo-context** to your applications: content localization, compliance checks, regional restrictions, or timezone-aware scheduling.
-
-```python
-# Content localization based on location
-result = resolve(user_lat, user_lon)
-if result.continent == 'Europe':
-    show_gdpr_banner()
-elif result.country == 'US':
-    show_us_specific_content()
-```
-
-### Development & Testing
-**Local development** and testing without needing API keys or internet connectivity. Great for CI/CD pipelines and automated testing.
-
-```python
-# Test with real data - no mocks needed
-def test_geocoding():
-    result = resolve(40.7128, -74.0060)
-    assert result.country == 'United States of America'
-    assert result.iso2 == 'US'
-```
-
-### Research & Academic Projects
-**Academic research** that requires reproducible results without external API dependencies or costs that might limit research scope.
-
-```python
-# Reproducible research - same results every time
-# No API costs to worry about in grant proposals
-results = [resolve(lat, lon) for lat, lon in research_coordinates]
-```
-
-## 💡 Benefits
-
-### For Developers
-
-#### **Simplicity & Speed**
-- **One-line integration**: `from geo_intel_offline import resolve`
-- **No configuration**: Works out of the box with pre-built data
-- **Lightning fast**: < 1ms per lookup means no performance bottlenecks
-- **Predictable**: Same coordinates always return same results
-
-#### **Development Experience**
-- **No API keys needed**: Start coding immediately
-- **Works offline**: Develop and test without internet
-- **No rate limits**: Test with unlimited requests
-- **Pure Python**: Easy to debug, inspect, and modify
-- **Well documented**: Comprehensive examples and API reference
-
-#### **Flexibility & Control**
-- **Modular loading**: Load only countries you need (reduce memory)
-- **Custom data**: Build datasets from your own GeoJSON sources
-- **No vendor lock-in**: Your code, your data, your control
-- **Deterministic**: Perfect for testing and reproducible builds
-
-### For Businesses & Organizations
-
-#### **Cost Savings**
-- **Zero API costs**: Save thousands on external geocoding services
-- **No infrastructure**: Runs locally, no cloud services needed
-- **No scaling costs**: Handle millions of requests without per-request fees
-- **Predictable expenses**: One-time setup, no ongoing subscription
-
-**Example Cost Comparison:**
-- External API: $0.005 per request × 1M requests = **$5,000/month**
-- This library: **$0/month** (one-time setup time)
-
-#### **Reliability & Performance**
-- **100% uptime**: No external service dependencies to fail
-- **Consistent latency**: < 1ms every time (no network delays)
-- **No rate limits**: Process data at your own pace
-- **Data privacy**: Location data never leaves your infrastructure
-
-#### **Scalability**
-- **Handle any volume**: Process billions of coordinates
-- **Edge deployment**: Deploy to edge devices and IoT
-- **Batch processing**: Process large datasets efficiently
-- **Memory efficient**: < 15MB footprint even with all countries
-
-#### **Compliance & Security**
-- **GDPR friendly**: No data sent to external services
-- **Offline capable**: Meets requirements for air-gapped systems
-- **Auditable**: You can inspect the exact logic and data
-- **No data sharing**: Complete data sovereignty
-
-### For End Users
-
-#### **Privacy**
-- **Data stays local**: Coordinates never sent to external servers
-- **No tracking**: No analytics, no usage monitoring
-- **Transparent**: Open source, you can verify everything
-
-#### **Performance**
-- **Instant results**: No network latency
-- **Works offline**: No internet required
-- **Low resource usage**: Runs on modest hardware
 
 ## 📦 Installation
 
@@ -210,10 +72,12 @@ pip install .
 
 ### Basic Usage
 
+The `resolve()` function automatically detects forward or reverse geocoding based on arguments:
+
+**Forward Geocoding** (Coordinates → Country):
 ```python
 from geo_intel_offline import resolve
 
-# Resolve coordinates to country information
 result = resolve(40.7128, -74.0060)  # New York City
 
 print(result.country)      # "United States of America"
@@ -222,6 +86,21 @@ print(result.iso3)         # "USA"
 print(result.continent)    # "North America"
 print(result.timezone)     # "America/New_York"
 print(result.confidence)   # 0.98
+```
+
+**Reverse Geocoding** (Country → Coordinates):
+```python
+from geo_intel_offline import resolve
+
+# Just pass country name or ISO code as a string
+result = resolve("United States")
+print(result.latitude)     # Country centroid latitude
+print(result.longitude)     # Country centroid longitude
+print(result.iso2)         # "US"
+
+# Works with ISO codes
+result = resolve("US")   # ISO2 code
+result = resolve("USA")  # ISO3 code
 ```
 
 ### Step-by-Step Guide
@@ -237,7 +116,7 @@ pip install geo-intel-offline
 ```python
 from geo_intel_offline import resolve
 
-# Resolve a coordinate
+# Forward geocoding: Resolve coordinates to country
 result = resolve(51.5074, -0.1278)  # London, UK
 
 # Access results as attributes
@@ -247,6 +126,11 @@ print(f"ISO3 Code: {result.iso3}")
 print(f"Continent: {result.continent}")
 print(f"Timezone: {result.timezone}")
 print(f"Confidence: {result.confidence:.2f}")
+
+# Reverse geocoding: Resolve country to coordinates
+result = resolve("United Kingdom")
+print(f"UK centroid: ({result.latitude}, {result.longitude})")
+print(f"ISO2: {result.iso2}")
 ```
 
 #### Step 3: Handle Edge Cases
@@ -266,7 +150,158 @@ if result.confidence < 0.7:
     print(f"Low confidence: {result.confidence:.2f} (near border)")
 ```
 
-## 📖 Detailed Examples
+## 📚 API Reference
+
+### `resolve(*args, data_dir=None, countries=None, continents=None, exclude_countries=None)`
+
+Unified function for both forward and reverse geocoding. Automatically detects mode based on arguments.
+
+**Forward Geocoding** (Coordinates → Country):
+- Pass two numeric arguments: `resolve(lat, lon)`
+- Example: `resolve(40.7128, -74.0060)`
+
+**Reverse Geocoding** (Country → Coordinates):
+- Pass one string argument: `resolve("Country Name")` or `resolve("ISO Code")`
+- Example: `resolve("United States")` or `resolve("US")`
+
+**Parameters:**
+
+**Positional Arguments:**
+- **Forward geocoding**: `(lat: float, lon: float)` - Two numeric values
+- **Reverse geocoding**: `(country: str)` - One string (country name or ISO code)
+
+**Keyword Arguments:**
+- `data_dir` (str, optional): Custom data directory path
+- `countries` (list[str], optional): List of ISO2 codes to load (modular format only, forward geocoding)
+- `continents` (list[str], optional): List of continent names to load (modular format only, forward geocoding)
+- `exclude_countries` (list[str], optional): List of ISO2 codes to exclude (modular format only, forward geocoding)
+
+**Returns:**
+
+- **Forward Geocoding**: `GeoIntelResult` object with:
+  - `country` (str | None): Country name
+  - `iso2` (str | None): ISO 3166-1 alpha-2 code
+  - `iso3` (str | None): ISO 3166-1 alpha-3 code
+  - `continent` (str | None): Continent name
+  - `timezone` (str | None): IANA timezone identifier
+  - `confidence` (float): Confidence score (0.0 to 1.0)
+
+- **Reverse Geocoding**: `ReverseGeoIntelResult` object with:
+  - `latitude` (float | None): Country centroid latitude
+  - `longitude` (float | None): Country centroid longitude
+  - `country` (str | None): Country name
+  - `iso2` (str | None): ISO 3166-1 alpha-2 code
+  - `iso3` (str | None): ISO 3166-1 alpha-3 code
+  - `continent` (str | None): Continent name
+  - `timezone` (str | None): IANA timezone identifier
+  - `confidence` (float): Always 1.0 for exact country match
+
+**Methods:**
+
+- `to_dict()`: Convert result to dictionary
+
+**Raises:**
+
+- `ValueError`: If parameters are invalid or missing
+- `FileNotFoundError`: If data files are missing
+
+**Examples:**
+
+```python
+# Forward geocoding (coordinates → country)
+result = resolve(40.7128, -74.0060)  # New York
+print(result.country)  # "United States of America"
+print(result.iso2)    # "US"
+
+# Reverse geocoding (country → coordinates)
+result = resolve("United States")
+print(result.latitude, result.longitude)  # Country centroid coordinates
+print(result.iso2)  # "US"
+
+# Reverse geocoding with ISO codes
+result = resolve("US")   # ISO2 code
+result = resolve("USA")  # ISO3 code
+result = resolve("JPN") # ISO3 code
+
+# Forward geocoding with filters
+result = resolve(40.7128, -74.0060, countries=["US", "CA"])
+result = resolve(40.7128, -74.0060, continents=["North America"])
+```
+
+### `resolve_by_country(country_input, data_dir=None)` ⚠️ Deprecated
+
+**Deprecated**: Use `resolve("Country Name")` instead for consistency.
+
+This function is kept for backward compatibility but the unified `resolve()` function is recommended.
+
+**Parameters:**
+
+- `country_input` (str): Country name (e.g., "United States", "Japan") or ISO code (e.g., "US", "USA", "JP", "JPN")
+- `data_dir` (str, optional): Custom data directory path
+
+**Returns:**
+
+`ReverseGeoIntelResult` object (same as `resolve("Country Name")`)
+
+**Example:**
+
+```python
+# Old way (still works)
+from geo_intel_offline import resolve_by_country
+result = resolve_by_country("United States")
+
+# New unified way (recommended)
+from geo_intel_offline import resolve
+result = resolve("United States")  # Just pass country name as string
+```
+
+### Result Objects
+
+#### `GeoIntelResult`
+
+Result object returned by forward geocoding `resolve(lat, lon)`.
+
+**Properties:**
+
+```python
+result.country      # Country name (str | None)
+result.iso2         # ISO2 code (str | None)
+result.iso3         # ISO3 code (str | None)
+result.continent    # Continent name (str | None)
+result.timezone     # Timezone (str | None)
+result.confidence   # Confidence score (float, 0.0-1.0)
+```
+
+**Methods:**
+
+```python
+result.to_dict()    # Convert to dictionary
+```
+
+#### `ReverseGeoIntelResult`
+
+Result object returned by reverse geocoding `resolve("Country Name")`.
+
+**Properties:**
+
+```python
+result.latitude     # Centroid latitude (float | None)
+result.longitude    # Centroid longitude (float | None)
+result.country      # Country name (str | None)
+result.iso2         # ISO2 code (str | None)
+result.iso3         # ISO3 code (str | None)
+result.continent    # Continent name (str | None)
+result.timezone     # Timezone (str | None)
+result.confidence   # Confidence score (float, always 1.0)
+```
+
+**Methods:**
+
+```python
+result.to_dict()    # Convert to dictionary
+```
+
+## 📖 Examples
 
 ### Example 1: Resolve Multiple Locations
 
@@ -388,217 +423,112 @@ result = safe_resolve(40.7128, -74.0060)
 print(result)
 ```
 
-## 📚 API Reference
-
-### `resolve(lat, lon, data_dir=None, countries=None, continents=None, exclude_countries=None)`
-
-Main function to resolve coordinates to geo-intelligence (forward geocoding).
-
-**Parameters:**
-
-- `lat` (float): Latitude (-90.0 to 90.0)
-- `lon` (float): Longitude (-180.0 to 180.0)
-- `data_dir` (str, optional): Custom data directory path
-- `countries` (list[str], optional): List of ISO2 codes to load (modular format only)
-- `continents` (list[str], optional): List of continent names to load (modular format only)
-- `exclude_countries` (list[str], optional): List of ISO2 codes to exclude (modular format only)
-
-**Returns:**
-
-`GeoIntelResult` object with the following properties:
-
-- `country` (str | None): Country name
-- `iso2` (str | None): ISO 3166-1 alpha-2 code
-- `iso3` (str | None): ISO 3166-1 alpha-3 code
-- `continent` (str | None): Continent name
-- `timezone` (str | None): IANA timezone identifier
-- `confidence` (float): Confidence score (0.0 to 1.0)
-
-**Methods:**
-
-- `to_dict()`: Convert result to dictionary
-
-**Raises:**
-
-- `ValueError`: If lat/lon are out of valid range
-- `FileNotFoundError`: If data files are missing
-
-### `resolve_by_country(country_input, data_dir=None)`
-
-Reverse geocoding function - resolves country name or ISO code to coordinates and metadata.
-
-**Parameters:**
-
-- `country_input` (str): Country name (e.g., "United States", "Japan") or ISO code (e.g., "US", "USA", "JP", "JPN")
-- `data_dir` (str, optional): Custom data directory path
-
-**Returns:**
-
-`ReverseGeoIntelResult` object with the following properties:
-
-- `latitude` (float | None): Country centroid latitude
-- `longitude` (float | None): Country centroid longitude
-- `country` (str | None): Country name
-- `iso2` (str | None): ISO 3166-1 alpha-2 code
-- `iso3` (str | None): ISO 3166-1 alpha-3 code
-- `continent` (str | None): Continent name
-- `timezone` (str | None): IANA timezone identifier
-- `confidence` (float): Always 1.0 for exact country match
-
-**Methods:**
-
-- `to_dict()`: Convert result to dictionary
-
-**Raises:**
-
-- `ValueError`: If country not found
-- `FileNotFoundError`: If data files are missing
-
-**Example:**
+### Example 6: Reverse Geocoding
 
 ```python
-from geo_intel_offline import resolve_by_country
+from geo_intel_offline import resolve
 
-# By country name
-result = resolve_by_country("United States")
-print(f"Coordinates: ({result.latitude}, {result.longitude})")
+# Get country centroid coordinates
+result = resolve("United States")
+print(f"US centroid: ({result.latitude}, {result.longitude})")
 
-# By ISO2 code
-result = resolve_by_country("US")
+# Works with ISO codes
+us_coords = resolve("US")      # ISO2 code
+jp_coords = resolve("JPN")     # ISO3 code
+uk_coords = resolve("United Kingdom")  # Country name
 
-# By ISO3 code
-result = resolve_by_country("USA")
-```
-
-### `GeoIntelResult`
-
-Result object returned by `resolve()`.
-
-**Properties:**
-
-```python
-result.country      # Country name (str | None)
-result.iso2         # ISO2 code (str | None)
-result.iso3         # ISO3 code (str | None)
-result.continent    # Continent name (str | None)
-result.timezone     # Timezone (str | None)
-result.confidence   # Confidence score (float, 0.0-1.0)
-```
-
-**Methods:**
-
-```python
-result.to_dict()    # Convert to dictionary
-```
-
-### `ReverseGeoIntelResult`
-
-Result object returned by `resolve_by_country()`.
-
-**Properties:**
-
-```python
-result.latitude     # Centroid latitude (float | None)
-result.longitude    # Centroid longitude (float | None)
-result.country      # Country name (str | None)
-result.iso2         # ISO2 code (str | None)
-result.iso3         # ISO3 code (str | None)
-result.continent    # Continent name (str | None)
-result.timezone     # Timezone (str | None)
-result.confidence   # Confidence score (float, always 1.0)
-```
-
-**Methods:**
-
-```python
-result.to_dict()    # Convert to dictionary
+# The function automatically detects reverse geocoding from a single string argument
 ```
 
 ## 🎯 Use Cases
 
-### 1. Geocoding Service
+### 1. Mobile Applications
+**Offline-first apps** that need to identify user location even without internet connectivity. Perfect for travel apps, fitness trackers, or field data collection tools that work in remote areas.
 
 ```python
+# Works offline - no internet needed!
 from geo_intel_offline import resolve
 
-def geocode_location(lat, lon):
-    """Geocode a location without external API."""
+def identify_user_country(lat, lon):
     result = resolve(lat, lon)
-    return {
-        "country": result.country,
-        "country_code": result.iso2,
-        "continent": result.continent,
-        "timezone": result.timezone,
-    }
-
-# Use in your application
-location_info = geocode_location(40.7128, -74.0060)
+    return result.country  # Works even in airplane mode
 ```
 
-### 2. User Location Analysis
+### 2. Data Processing & Analytics
+**Batch processing** of GPS logs, location data, or transaction records. Process millions of coordinates without API rate limits or costs.
 
 ```python
-from geo_intel_offline import resolve
-
-def analyze_user_locations(locations):
-    """Analyze user locations for geographic distribution."""
-    countries = {}
-    for lat, lon in locations:
-        result = resolve(lat, lon)
-        if result.country:
-            countries[result.country] = countries.get(result.country, 0) + 1
-    return countries
-```
-
-### 3. Data Enrichment
-
-```python
-from geo_intel_offline import resolve
+# Process millions of records - no rate limits!
 import pandas as pd
+from geo_intel_offline import resolve
 
-# Enrich DataFrame with country information
-df = pd.DataFrame({
-    'lat': [40.7128, 51.5074, 35.6762],
-    'lon': [-74.0060, -0.1278, 139.6503],
-})
-
+df = pd.read_csv('location_data.csv')
 df['country'] = df.apply(
     lambda row: resolve(row['lat'], row['lon']).country,
     axis=1
 )
-df['iso2'] = df.apply(
-    lambda row: resolve(row['lat'], row['lon']).iso2,
-    axis=1
-)
-
-print(df)
 ```
 
-### 4. Reverse Geocoding (Country → Coordinates)
+### 3. IoT & Edge Devices
+**Edge computing** applications where devices need geo-intelligence without cloud connectivity. Perfect for sensors, trackers, or embedded systems.
 
 ```python
-from geo_intel_offline import resolve_by_country
-
-# Get country centroid coordinates
-result = resolve_by_country("United States")
-print(f"US centroid: ({result.latitude}, {result.longitude})")
-
-# Works with ISO codes
-us_coords = resolve_by_country("US")
-jp_coords = resolve_by_country("JPN")
-uk_coords = resolve_by_country("United Kingdom")
+# Runs on Raspberry Pi, microcontrollers, edge devices
+# No cloud dependency, minimal resources
+result = resolve(sensor_lat, sensor_lon)
+if result.country != 'US':
+    trigger_alert()
 ```
 
-### 5. API Rate Limiting Alternative
+### 4. API Alternatives & Rate Limit Avoidance
+**Replace expensive APIs** or bypass rate limits. Perfect for applications that need high throughput or want to reduce infrastructure costs.
 
 ```python
-from geo_intel_offline import resolve
+# Instead of: external_api.geocode(lat, lon)  # $0.005 per request
+# Use: resolve(lat, lon)  # FREE, unlimited, instant
+```
 
-# Instead of calling external API
-# result = external_api.geocode(lat, lon)  # Rate limited!
+### 5. Geographic Data Enrichment
+**Enrich datasets** with country information for analysis, visualization, or machine learning. No need to maintain external API connections or handle failures.
 
-# Use offline resolution
-result = resolve(lat, lon)  # No rate limits, always available
+```python
+# Enrich logs, events, transactions with country data
+events = load_events_from_database()
+for event in events:
+    event['country'] = resolve(event['lat'], event['lon']).iso2
+    save_event(event)
+```
+
+### 6. Location-Based Features
+**Add geo-context** to your applications: content localization, compliance checks, regional restrictions, or timezone-aware scheduling.
+
+```python
+# Content localization based on location
+result = resolve(user_lat, user_lon)
+if result.continent == 'Europe':
+    show_gdpr_banner()
+elif result.country == 'US':
+    show_us_specific_content()
+```
+
+### 7. Development & Testing
+**Local development** and testing without needing API keys or internet connectivity. Great for CI/CD pipelines and automated testing.
+
+```python
+# Test with real data - no mocks needed
+def test_geocoding():
+    result = resolve(40.7128, -74.0060)
+    assert result.country == 'United States of America'
+    assert result.iso2 == 'US'
+```
+
+### 8. Research & Academic Projects
+**Academic research** that requires reproducible results without external API dependencies or costs that might limit research scope.
+
+```python
+# Reproducible research - same results every time
+# No API costs to worry about in grant proposals
+results = [resolve(lat, lon) for lat, lon in research_coordinates]
 ```
 
 ## 🔧 Advanced Usage
@@ -622,9 +552,9 @@ result = resolve(35.6762, 139.6503, exclude_countries=["RU", "CN"])
 
 **Note:** Modular data loading requires building data in modular format. See [Building Custom Data](#building-custom-data) below.
 
-## 🏗️ Building Custom Data (Advanced)
+### Building Custom Data (Advanced)
 
-### Prerequisites
+#### Prerequisites
 
 1. Download Natural Earth Admin 0 Countries GeoJSON:
    ```bash
@@ -633,7 +563,7 @@ result = resolve(35.6762, 139.6503, exclude_countries=["RU", "CN"])
    bash scripts/download_natural_earth.sh
    ```
 
-### Build Full Dataset
+#### Build Full Dataset
 
 ```bash
 # Build complete dataset with compression
@@ -647,7 +577,7 @@ python3 scripts/prepare_full_data.py
 
 **Note:** The build process automatically compresses data files, reducing size by ~66%.
 
-### Build Modular Dataset
+#### Build Modular Dataset
 
 ```bash
 # Build modular format (country-wise files)
@@ -668,14 +598,13 @@ python3 -m geo_intel_offline.data_builder_modular \
     output_directory
 ```
 
-## ⚡ Performance
+## ⚡ Performance & Accuracy
 
-### Benchmarks
+### Performance Benchmarks
 
 - **Lookup Speed**: < 1ms per resolution
 - **Memory Footprint**: < 15 MB (all data in memory)
 - **Cold Start**: ~100ms (initial data load)
-- **Accuracy**: 99.92% across 258 countries
 - **Data Size**: ~4 MB compressed (66% reduction)
 
 ### Performance Test
@@ -701,7 +630,37 @@ avg_time = ((end - start) / (100 * len(test_points))) * 1000
 print(f"Average lookup time: {avg_time:.3f}ms")
 ```
 
-## 🔍 Understanding Confidence Scores
+### Test Results
+
+Comprehensive testing across **258 countries** with exceptional accuracy:
+
+#### Forward Geocoding (Coordinates → Country)
+
+- **Overall Accuracy**: **99.92%** (2,511 passed / 2,513 total test points)
+- **Countries Tested**: 258
+- **Countries with 100% Accuracy**: 256 (99.2%)
+- **Countries with 90%+ Accuracy**: 257 (99.6%)
+- **Test Points**: 2,513 (10 points per country, varies for small territories)
+
+#### Reverse Geocoding (Country → Coordinates)
+
+- **Overall Accuracy**: **100.00%** (730 passed / 730 total tests)
+- **By Country Name**: 258/258 (100.00%)
+- **By ISO2 Code**: 236/236 (100.00%)
+- **By ISO3 Code**: 236/236 (100.00%)
+
+#### Key Highlights
+
+✅ **99.92% accuracy** for forward geocoding across all countries  
+✅ **100% accuracy** for reverse geocoding with all input methods  
+✅ **258 countries** fully supported including territories and disputed regions  
+✅ **Comprehensive coverage** of all continents and major territories  
+
+**Note**: Only 1 country (Akrotiri) has accuracy below 90% due to territorial overlap with Cyprus. This is expected behavior for disputed territories.
+
+See [TEST_RESULTS.md](TEST_RESULTS.md) for detailed country-wise results, continent-level breakdowns, and comprehensive test methodology.
+
+### Understanding Confidence Scores
 
 Confidence scores range from 0.0 to 1.0:
 
@@ -722,6 +681,16 @@ print(f"Confidence: {result.confidence:.2f}")  # ~0.65-0.75
 result = resolve(0.0, 0.0)  # Ocean
 print(f"Confidence: {result.confidence:.2f}")  # 0.0
 ```
+
+## 🏗️ Architecture
+
+The library uses a hybrid three-stage resolution pipeline:
+
+1. **Geohash Indexing**: Fast spatial filtering to candidate countries
+2. **Point-in-Polygon**: Accurate geometric verification using ray casting
+3. **Confidence Scoring**: Distance-to-border calculation for certainty assessment
+
+For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## ❓ Troubleshooting
 
@@ -766,32 +735,6 @@ result = resolve(lat, lon)
 result = resolve(lat, lon, countries=["US", "CA"])
 ```
 
-## 📊 Test Results
-
-Comprehensive testing across 258 countries:
-
-- **Overall Accuracy**: 99.92%
-- **Countries Tested**: 258
-- **Total Test Points**: 2,513
-- **Countries with 100% Accuracy**: 256 (99.2%)
-- **Countries with 90%+ Accuracy**: 257 (99.6%)
-
-See [TEST_RESULTS.md](TEST_RESULTS.md) for detailed country-wise results.
-
-## 🏗️ Architecture
-
-The library uses a hybrid three-stage resolution pipeline:
-
-1. **Geohash Indexing**: Fast spatial filtering to candidate countries
-2. **Point-in-Polygon**: Accurate geometric verification using ray casting
-3. **Confidence Scoring**: Distance-to-border calculation for certainty assessment
-
-For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
-
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -804,7 +747,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## 📚 Additional Documentation
+## 📝 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 📚 Additional Resources
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Internal design and architecture details
 - **[TEST_RESULTS.md](TEST_RESULTS.md)** - Comprehensive test results and benchmarks

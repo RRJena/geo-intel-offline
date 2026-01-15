@@ -4,9 +4,12 @@ Public API for geo_intel_offline library.
 Clean, simple interface that hides implementation details.
 """
 
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Union, TYPE_CHECKING
 from .resolver import resolve as _resolve, ResolutionResult
 from .reverse_resolver import resolve_by_country as _resolve_by_country, ReverseResolutionResult
+
+if TYPE_CHECKING:
+    from typing import TypeVar
 
 
 class GeoIntelResult:
@@ -65,54 +68,150 @@ class GeoIntelResult:
 
 
 def resolve(
-    lat: float,
-    lon: float,
+    *args,
     data_dir: Optional[str] = None,
     countries: Optional[List[str]] = None,
     continents: Optional[List[str]] = None,
-    exclude_countries: Optional[List[str]] = None
-) -> GeoIntelResult:
+    exclude_countries: Optional[List[str]] = None,
+    **kwargs
+):
     """
-    Resolve latitude/longitude to geo-intelligence.
+    Resolve coordinates to geo-intelligence (forward geocoding) or country to coordinates (reverse geocoding).
     
-    This is the main public API function. It resolves a coordinate pair
-    to country, ISO codes, continent, timezone, and confidence score.
+    This unified function automatically detects the mode based on parameters:
+    
+    **Forward Geocoding** (Coordinates → Country):
+        Pass two numeric arguments: resolve(lat, lon)
+        Example: resolve(40.7128, -74.0060)
+    
+    **Reverse Geocoding** (Country → Coordinates):
+        Pass one string argument: resolve("United States") or resolve("US")
+        Example: resolve("United States")
     
     Args:
-        lat: Latitude (-90.0 to 90.0)
-        lon: Longitude (-180.0 to 180.0)
+        *args: 
+            - For forward geocoding: (lat: float, lon: float)
+            - For reverse geocoding: (country: str)
         data_dir: Optional custom data directory path
-        countries: Optional list of ISO2 codes to load (modular format only)
-        continents: Optional list of continent names to load (modular format only)
-        exclude_countries: Optional list of ISO2 codes to exclude (modular format only)
+        countries: Optional list of ISO2 codes to load (modular format only, forward geocoding)
+        continents: Optional list of continent names to load (modular format only, forward geocoding)
+        exclude_countries: Optional list of ISO2 codes to exclude (modular format only, forward geocoding)
+        **kwargs: Reserved for future use
     
     Returns:
-        GeoIntelResult object with resolved information
+        - GeoIntelResult for forward geocoding (when lat/lon provided)
+        - ReverseGeoIntelResult for reverse geocoding (when country string provided)
     
-    Example:
-        >>> result = resolve(40.7128, -74.0060)
+    Examples:
+        Forward geocoding (coordinates → country):
+        >>> result = resolve(40.7128, -74.0060)  # New York
         >>> print(result.country)
-        'United States'
-        >>> print(result.confidence)
-        0.98
+        'United States of America'
+        >>> print(result.iso2)
+        'US'
         
-        >>> # Load only specific countries
+        Reverse geocoding (country → coordinates):
+        >>> result = resolve("United States")
+        >>> print(result.latitude, result.longitude)
+        39.8283 -98.5795
+        >>> print(result.iso2)
+        'US'
+        
+        >>> result = resolve("US")   # ISO2 code
+        >>> result = resolve("USA")  # ISO3 code
+        
+        Forward geocoding with filters:
         >>> result = resolve(40.7128, -74.0060, countries=["US", "CA"])
-        
-        >>> # Load by continent
         >>> result = resolve(40.7128, -74.0060, continents=["North America"])
     
     Raises:
-        ValueError: If lat/lon are out of valid range
+        ValueError: If parameters are invalid or missing
         FileNotFoundError: If data files are missing
     """
-    resolution_result = _resolve(
-        lat, lon, data_dir,
-        countries=countries,
-        continents=continents,
-        exclude_countries=exclude_countries
-    )
-    return GeoIntelResult(resolution_result)
+    # Auto-detect mode based on arguments
+    if len(args) == 2:
+        # Forward geocoding: two numeric arguments (lat, lon)
+        lat, lon = args[0], args[1]
+        
+        # Validate types
+        if not isinstance(lat, (int, float)) or not isinstance(lon, (int, float)):
+            raise ValueError(
+                f"Forward geocoding requires two numeric arguments (lat, lon). "
+                f"Got: lat={type(lat).__name__}, lon={type(lon).__name__}\n"
+                f"For reverse geocoding, use: resolve('Country Name')"
+            )
+        
+        # Forward geocoding mode
+        resolution_result = _resolve(
+            float(lat), float(lon), data_dir,
+            countries=countries,
+            continents=continents,
+            exclude_countries=exclude_countries
+        )
+        return GeoIntelResult(resolution_result)
+    
+    elif len(args) == 1:
+        # Reverse geocoding: one string argument (country)
+        country_input = args[0]
+        
+        # Validate type
+        if not isinstance(country_input, str):
+            raise ValueError(
+                f"Reverse geocoding requires one string argument (country name or ISO code). "
+                f"Got: {type(country_input).__name__}\n"
+                f"For forward geocoding, use: resolve(lat, lon)"
+            )
+        
+        # Check if forward geocoding parameters were passed as keyword args (backward compatibility)
+        if 'lat' in kwargs or 'lon' in kwargs:
+            raise ValueError(
+                "Cannot mix positional and keyword arguments for coordinates. "
+                "Use resolve(lat, lon) for forward geocoding or resolve('Country') for reverse geocoding."
+            )
+        
+        # Reverse geocoding mode
+        reverse_result = _resolve_by_country(country_input, data_dir)
+        return ReverseGeoIntelResult(reverse_result)
+    
+    elif len(args) == 0:
+        # Check if country was passed as keyword argument (backward compatibility)
+        if 'country' in kwargs:
+            country_input = kwargs.pop('country')
+            if not isinstance(country_input, str):
+                raise ValueError("country parameter must be a string")
+            reverse_result = _resolve_by_country(country_input, data_dir)
+            return ReverseGeoIntelResult(reverse_result)
+        
+        # Check if lat/lon were passed as keyword arguments (backward compatibility)
+        if 'lat' in kwargs and 'lon' in kwargs:
+            lat, lon = kwargs.pop('lat'), kwargs.pop('lon')
+            if not isinstance(lat, (int, float)) or not isinstance(lon, (int, float)):
+                raise ValueError("lat and lon must be numeric")
+            resolution_result = _resolve(
+                float(lat), float(lon), data_dir,
+                countries=countries,
+                continents=continents,
+                exclude_countries=exclude_countries
+            )
+            return GeoIntelResult(resolution_result)
+        
+        raise ValueError(
+            "Must provide either:\n"
+            "  - Two numeric arguments for forward geocoding: resolve(lat, lon)\n"
+            "  - One string argument for reverse geocoding: resolve('Country Name')\n"
+            "Examples:\n"
+            "  Forward:  resolve(40.7128, -74.0060)\n"
+            "  Reverse:  resolve('United States')"
+        )
+    
+    else:
+        raise ValueError(
+            f"Invalid number of arguments: {len(args)}. "
+            f"Expected 1 (reverse) or 2 (forward) positional arguments.\n"
+            f"Examples:\n"
+            f"  Forward:  resolve(40.7128, -74.0060)\n"
+            f"  Reverse:  resolve('United States')"
+        )
 
 
 class ReverseGeoIntelResult:
@@ -187,6 +286,9 @@ def resolve_by_country(
     """
     Resolve country name or ISO code to coordinates and metadata.
     
+    **Deprecated**: Use `resolve(country=country_input)` instead for consistency.
+    This function is kept for backward compatibility.
+    
     This function performs reverse geocoding - given a country name or ISO code,
     it returns the country's centroid coordinates along with all metadata.
     
@@ -209,16 +311,9 @@ def resolve_by_country(
         >>> result = resolve_by_country("United States")
         >>> print(result.latitude, result.longitude)
         39.8283 -98.5795
-        >>> print(result.iso2)
-        'US'
         
-        >>> result = resolve_by_country("US")  # ISO2 code
-        >>> print(result.country)
-        'United States of America'
-        
-        >>> result = resolve_by_country("USA")  # ISO3 code
-        >>> print(result.latitude, result.longitude)
-        39.8283 -98.5795
+        # Recommended: Use unified resolve() function instead
+        >>> result = resolve(country="United States")
     
     Raises:
         ValueError: If country not found

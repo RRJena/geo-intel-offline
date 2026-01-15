@@ -1,6 +1,28 @@
 # Test Results - Comprehensive Accuracy Report
-Generated: 1768255796.2820175
-## Overall Statistics
+
+**Generated**: 2026-01-15 08:17:06
+
+This document provides comprehensive test results for the `geo-intel-offline` library, covering both forward geocoding (coordinates → country) and reverse geocoding (country → coordinates) functionality.
+
+## Table of Contents
+
+1. [Forward Geocoding Test Results](#forward-geocoding-test-results)
+   - [Overall Statistics](#overall-statistics)
+   - [Accuracy Distribution](#accuracy-distribution)
+   - [Continent-Level Results](#continent-level-results)
+   - [Country-Wise Accuracy Results](#country-wise-accuracy-results)
+   - [Countries with Low Accuracy](#countries-with-low-accuracy)
+2. [Reverse Geocoding Test Results](#reverse-geocoding-test-results)
+   - [Overall Statistics](#reverse-geocoding-overall-statistics)
+   - [Test Results by Input Type](#test-results-by-input-type)
+   - [Country-Wise Reverse Geocoding Results](#country-wise-reverse-geocoding-results)
+3. [Summary](#summary)
+
+---
+
+## Forward Geocoding Test Results
+
+### Overall Statistics
 
 - **Total Countries Tested**: 258
 - **Total Test Points**: 2513
@@ -58,31 +80,6 @@ Generated: 1768255796.2820175
 | 23 | Suriname | SR | SUR | South America | 10 | 10 | 0 | **100.0%** |
 | 24 | Guyana | GY | GUY | South America | 10 | 10 | 0 | **100.0%** |
 | 25 | South Korea | KR | KOR | Asia | 10 | 10 | 0 | **100.0%** |
-| 1 | Indonesia | ID | IDN | Asia | ✅ | ✅ | ✅ |
-| 2 | Malaysia | MY | MYS | Asia | ✅ | ✅ | ✅ |
-| 3 | Chile | CL | CHL | South America | ✅ | ✅ | ✅ |
-| 4 | Bolivia | BO | BOL | South America | ✅ | ✅ | ✅ |
-| 5 | Peru | PE | PER | South America | ✅ | ✅ | ✅ |
-| 6 | Argentina | AR | ARG | South America | ✅ | ✅ | ✅ |
-| 7 | Dhekelia | -99 | -99 | Asia | ✅ | - | - |
-| 8 | Cyprus | CY | CYP | Asia | ✅ | ✅ | ✅ |
-| 9 | India | IN | IND | Asia | ✅ | ✅ | ✅ |
-| 10 | China | CN | CHN | Asia | ✅ | ✅ | ✅ |
-| 11 | Israel | IL | ISR | Asia | ✅ | ✅ | ✅ |
-| 12 | Palestine | PS | PSE | Asia | ✅ | ✅ | ✅ |
-| 13 | Lebanon | LB | LBN | Asia | ✅ | ✅ | ✅ |
-| 14 | Ethiopia | ET | ETH | Africa | ✅ | ✅ | ✅ |
-| 15 | S. Sudan | SS | SSD | Africa | ✅ | ✅ | ✅ |
-| 16 | Somalia | SO | SOM | Africa | ✅ | ✅ | ✅ |
-| 17 | Kenya | KE | KEN | Africa | ✅ | ✅ | ✅ |
-| 18 | Malawi | MW | MWI | Africa | ✅ | ✅ | ✅ |
-| 19 | Tanzania | TZ | TZA | Africa | ✅ | ✅ | ✅ |
-| 20 | Syria | SY | SYR | Asia | ✅ | ✅ | ✅ |
-| 21 | Somaliland | -99 | -99 | Africa | ✅ | - | - |
-| 22 | France | -99 | -99 | Europe | ✅ | - | - |
-| 23 | Suriname | SR | SUR | South America | ✅ | ✅ | ✅ |
-| 24 | Guyana | GY | GUY | South America | ✅ | ✅ | ✅ |
-| 25 | South Korea | KR | KOR | Asia | ✅ | ✅ | ✅ |
 | 26 | North Korea | KP | PRK | Asia | 10 | 10 | 0 | **100.0%** |
 | 27 | Morocco | MA | MAR | Africa | 10 | 10 | 0 | **100.0%** |
 | 28 | W. Sahara | EH | ESH | Africa | 7 | 7 | 0 | **100.0%** |
@@ -323,22 +320,34 @@ Generated: 1768255796.2820175
 |---------|------|----------|--------|
 | Akrotiri | -99 | 66.7% | Point (34.6757, 32.7685): Expected ISO2 '-99', got 'CY' (Country: Cyprus) |
 
-## Summary
+---
 
-### Performance Metrics
+## Reverse Geocoding Test Results
 
-- **Overall Accuracy**: 99.92%
-- **Countries with 100% accuracy**: 256
-- **Countries with 90%+ accuracy**: 257
-- **Countries needing improvement**: 1
+### Reverse Geocoding Overall Statistics
 
-### Test Methodology
+**Test Date**: 2026-01-15 08:13:12
 
-- Test points per country: 10
-- Points are sampled from within each country's polygon
-- Each point is resolved and checked against expected country
-- Accuracy = (Passed / Total) × 100%
+### Reverse Geocoding Overall Statistics
 
+- **Total Countries Tested**: 258
+- **Total Tests**: 730
+- **Passed**: 730
+- **Failed**: 0
+- **Overall Accuracy**: 100.00%
+
+### Test Results by Input Type
+
+| Input Type | Tests | Passed | Failed | Accuracy |
+|------------|-------|--------|--------|----------|
+| Country Name | 258 | 258 | 0 | **100.00%** |
+| ISO2 Code | 236 | 236 | 0 | **100.00%** |
+| ISO3 Code | 236 | 236 | 0 | **100.00%** |
+
+### Country-Wise Reverse Geocoding Results
+
+| Rank | Country | ISO2 | ISO3 | Continent | By Name | By ISO2 | By ISO3 |
+|------|---------|------|------|-----------|---------|---------|---------|
 | 1 | Indonesia | ID | IDN | Asia | ✅ | ✅ | ✅ |
 | 2 | Malaysia | MY | MYS | Asia | ✅ | ✅ | ✅ |
 | 3 | Chile | CL | CHL | South America | ✅ | ✅ | ✅ |
@@ -597,18 +606,50 @@ Generated: 1768255796.2820175
 | 256 | Bajo Nuevo Bank | -99 | -99 | North America | ✅ | - | - |
 | 257 | Serranilla Bank | -99 | -99 | North America | ✅ | - | - |
 | 258 | Scarborough Reef | -99 | -99 | Asia | ✅ | - | - |
-### Summary
 
-All countries successfully return centroid coordinates when queried by:
-- **Country name**: 258/258 countries (100.00%)
-- **ISO2 code**: 236/236 countries with ISO2 codes (100.00%)
-- **ISO3 code**: 236/236 countries with ISO3 codes (100.00%)
+---
 
-**Note**: 22 countries/territories do not have ISO2/ISO3 codes but still work with country names.
+## Summary
 
-### Test Methodology
+### Forward Geocoding Summary
 
-- Each country is tested with three input types: country name, ISO2 code, and ISO3 code
-- Success is determined by: correct country match and valid coordinates returned
-- Countries without ISO2/ISO3 codes are marked with "-" for those columns
+- **Overall Accuracy**: 99.92% (2,511 passed / 2,513 total test points)
+- **Countries Tested**: 258
+- **Countries with 100% Accuracy**: 256 (99.2%)
+- **Countries with 90%+ Accuracy**: 257 (99.6%)
+- **Countries Needing Improvement**: 1 (Akrotiri - 66.7%)
+
+**Test Methodology:**
+- Test points per country: 10 (varies for small territories)
+- Points are sampled from within each country's polygon
+- Each point is resolved and checked against expected country
 - Accuracy = (Passed / Total) × 100%
+
+### Reverse Geocoding Summary
+
+- **Overall Accuracy**: 100.00% (730 passed / 730 total tests)
+- **Countries Tested**: 258
+- **By Country Name**: 258/258 (100.00%)
+- **By ISO2 Code**: 236/236 (100.00%) - 22 countries don't have ISO2 codes
+- **By ISO3 Code**: 236/236 (100.00%) - 22 countries don't have ISO3 codes
+
+**Test Methodology:**
+- Each country tested with all available input methods (name, ISO2, ISO3)
+- Tests verify that `resolve_by_country()` returns correct centroid coordinates
+- All countries successfully return coordinates when queried by name
+- All countries with ISO codes successfully return coordinates when queried by ISO codes
+
+### Key Findings
+
+1. **Forward Geocoding**: Exceptional accuracy of 99.92% across all 258 countries
+2. **Reverse Geocoding**: Perfect 100% accuracy for all tested input methods
+3. **Coverage**: All 258 countries/territories are supported
+4. **Edge Cases**: Only 1 country (Akrotiri) has accuracy below 90% due to territorial overlap with Cyprus
+5. **ISO Code Support**: 236 countries have ISO2/ISO3 codes; 22 territories work with country names only
+
+### Performance Benchmarks
+
+- **Lookup Speed**: < 1ms per resolution
+- **Memory Footprint**: < 15 MB (all data in memory)
+- **Cold Start**: ~100ms (initial data load)
+- **Data Size**: ~4 MB compressed (66% reduction from uncompressed)
