@@ -60,3 +60,4 @@ geo_intel_offline/data_dev/
 .mypy_cache/
 .ruff_cache/
 *.log
+ARCHITECTURE.md
