@@ -572,3 +572,18 @@ Generated: 1768255796.2820175
 | 256 | Bajo Nuevo Bank | -99 | -99 | North America | ✅ | - | - |
 | 257 | Serranilla Bank | -99 | -99 | North America | ✅ | - | - |
 | 258 | Scarborough Reef | -99 | -99 | Asia | ✅ | - | - |
+### Summary
+
+All countries successfully return centroid coordinates when queried by:
+- **Country name**: 258/258 countries (100.00%)
+- **ISO2 code**: 236/236 countries with ISO2 codes (100.00%)
+- **ISO3 code**: 236/236 countries with ISO3 codes (100.00%)
+
+**Note**: 22 countries/territories do not have ISO2/ISO3 codes but still work with country names.
+
+### Test Methodology
+
+- Each country is tested with three input types: country name, ISO2 code, and ISO3 code
+- Success is determined by: correct country match and valid coordinates returned
+- Countries without ISO2/ISO3 codes are marked with "-" for those columns
+- Accuracy = (Passed / Total) × 100%
