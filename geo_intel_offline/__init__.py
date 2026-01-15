@@ -9,7 +9,7 @@ Resolves latitude/longitude coordinates to:
 - Confidence score
 """
 
-from .api import resolve, GeoIntelResult
+from .api import resolve, GeoIntelResult, resolve_by_country, ReverseGeoIntelResult
 
-__version__ = "1.0.0"
-__all__ = ["resolve", "GeoIntelResult"]
+__version__ = "1.0.2"
+__all__ = ["resolve", "GeoIntelResult", "resolve_by_country", "ReverseGeoIntelResult"]

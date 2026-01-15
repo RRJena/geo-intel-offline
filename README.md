@@ -392,7 +392,7 @@ print(result)
 
 ### `resolve(lat, lon, data_dir=None, countries=None, continents=None, exclude_countries=None)`
 
-Main function to resolve coordinates to geo-intelligence.
+Main function to resolve coordinates to geo-intelligence (forward geocoding).
 
 **Parameters:**
 
@@ -423,6 +423,53 @@ Main function to resolve coordinates to geo-intelligence.
 - `ValueError`: If lat/lon are out of valid range
 - `FileNotFoundError`: If data files are missing
 
+### `resolve_by_country(country_input, data_dir=None)`
+
+Reverse geocoding function - resolves country name or ISO code to coordinates and metadata.
+
+**Parameters:**
+
+- `country_input` (str): Country name (e.g., "United States", "Japan") or ISO code (e.g., "US", "USA", "JP", "JPN")
+- `data_dir` (str, optional): Custom data directory path
+
+**Returns:**
+
+`ReverseGeoIntelResult` object with the following properties:
+
+- `latitude` (float | None): Country centroid latitude
+- `longitude` (float | None): Country centroid longitude
+- `country` (str | None): Country name
+- `iso2` (str | None): ISO 3166-1 alpha-2 code
+- `iso3` (str | None): ISO 3166-1 alpha-3 code
+- `continent` (str | None): Continent name
+- `timezone` (str | None): IANA timezone identifier
+- `confidence` (float): Always 1.0 for exact country match
+
+**Methods:**
+
+- `to_dict()`: Convert result to dictionary
+
+**Raises:**
+
+- `ValueError`: If country not found
+- `FileNotFoundError`: If data files are missing
+
+**Example:**
+
+```python
+from geo_intel_offline import resolve_by_country
+
+# By country name
+result = resolve_by_country("United States")
+print(f"Coordinates: ({result.latitude}, {result.longitude})")
+
+# By ISO2 code
+result = resolve_by_country("US")
+
+# By ISO3 code
+result = resolve_by_country("USA")
+```
+
 ### `GeoIntelResult`
 
 Result object returned by `resolve()`.
@@ -436,6 +483,29 @@ result.iso3         # ISO3 code (str | None)
 result.continent    # Continent name (str | None)
 result.timezone     # Timezone (str | None)
 result.confidence   # Confidence score (float, 0.0-1.0)
+```
+
+**Methods:**
+
+```python
+result.to_dict()    # Convert to dictionary
+```
+
+### `ReverseGeoIntelResult`
+
+Result object returned by `resolve_by_country()`.
+
+**Properties:**
+
+```python
+result.latitude     # Centroid latitude (float | None)
+result.longitude    # Centroid longitude (float | None)
+result.country      # Country name (str | None)
+result.iso2         # ISO2 code (str | None)
+result.iso3         # ISO3 code (str | None)
+result.continent    # Continent name (str | None)
+result.timezone     # Timezone (str | None)
+result.confidence   # Confidence score (float, always 1.0)
 ```
 
 **Methods:**
@@ -504,7 +574,22 @@ df['iso2'] = df.apply(
 print(df)
 ```
 
-### 4. API Rate Limiting Alternative
+### 4. Reverse Geocoding (Country → Coordinates)
+
+```python
+from geo_intel_offline import resolve_by_country
+
+# Get country centroid coordinates
+result = resolve_by_country("United States")
+print(f"US centroid: ({result.latitude}, {result.longitude})")
+
+# Works with ISO codes
+us_coords = resolve_by_country("US")
+jp_coords = resolve_by_country("JPN")
+uk_coords = resolve_by_country("United Kingdom")
+```
+
+### 5. API Rate Limiting Alternative
 
 ```python
 from geo_intel_offline import resolve
