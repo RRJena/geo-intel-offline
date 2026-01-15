@@ -201,7 +201,7 @@ uv pip install geo-intel-offline
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/geo-intel-offline.git
+git clone https://github.com/RRJena/geo-intel-offline.git
 cd geo-intel-offline
 pip install .
 ```
@@ -728,8 +728,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 ## 🔗 Links
 
 - **PyPI**: https://pypi.org/project/geo-intel-offline/
-- **GitHub**: https://github.com/yourusername/geo-intel-offline
-- **Issues**: https://github.com/yourusername/geo-intel-offline/issues
+- **GitHub**: https://github.com/RRJena/geo-intel-offline
+- **Issues**: https://github.com/RRJena/geo-intel-offline/issues
 
 ## 🙏 Acknowledgments
 
@@ -748,4 +748,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-**Made with ❤️ for the Python community**
+**Made with ❤️ by Rakesh Ranjan Jena for the Python community**

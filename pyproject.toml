@@ -28,11 +28,11 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/geo-intel-offline"
-Documentation = "https://github.com/yourusername/geo-intel-offline#readme"
-Repository = "https://github.com/yourusername/geo-intel-offline"
-Issues = "https://github.com/yourusername/geo-intel-offline/issues"
-"Bug Tracker" = "https://github.com/yourusername/geo-intel-offline/issues"
+Homepage = "https://github.com/RRJena/geo-intel-offline"
+Documentation = "https://github.com/RRJena/geo-intel-offline#readme"
+Repository = "https://github.com/RRJena/geo-intel-offline"
+Issues = "https://github.com/RRJena/geo-intel-offline/issues"
+"Bug Tracker" = "https://github.com/RRJena/geo-intel-offline/issues"
 
 [tool.setuptools]
 packages = ["geo_intel_offline"]

@@ -16,7 +16,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Geo Intelligence Team",
-    url="https://github.com/your-org/geo-intel-offline",
+    url="https://github.com/RRJena/geo-intel-offline",
     packages=find_packages(),
     package_data={
         "geo_intel_offline": [
