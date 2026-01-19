@@ -572,7 +572,9 @@ python3 -m geo_intel_offline.data_builder \
     geo_intel_offline/data
 
 # Or use automated script
-python3 scripts/prepare_full_data.py
+python3 -m geo_intel_offline.data_builder \
+    data_sources/ne_10m_admin_0_countries.geojson \
+    geo_intel_offline/data
 ```
 
 **Note:** The build process automatically compresses data files, reducing size by ~66%.

@@ -8,7 +8,7 @@ Thank you for your interest in contributing to geo-intel-offline! This document 
 2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/geo-intel-offline.git`
 3. Create a branch: `git checkout -b feature/your-feature-name`
 4. Make your changes
-5. Test your changes: `python run_tests.py`
+5. Test your changes: `pytest` or `python -m pytest`
 6. Commit your changes: `git commit -m 'Add some feature'`
 7. Push to your branch: `git push origin feature/your-feature-name`
 8. Open a Pull Request
@@ -23,10 +23,14 @@ pip install -e .
 pip install -e ".[dev]"
 
 # Run tests
-python run_tests.py
+pytest
+# Or with coverage
+pytest --cov=geo_intel_offline --cov-report=html
 
-# Build package
-python scripts/build_package.py
+# Build package (standard Python way)
+python setup.py sdist bdist_wheel
+# Or using build tool
+python -m build
 ```
 
 ## Code Style
