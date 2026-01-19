@@ -61,6 +61,19 @@ geo_intel_offline/data_dev/
 .ruff_cache/
 *.log
 
+# Development/utility Python scripts (not needed in package)
+run_tests.py
+verify_setup.py
+scripts/*.py
+scripts/build_package.py
+scripts/cleanup.py
+scripts/full_e2e_test.py
+scripts/generate_reverse_geocoding_report.py
+scripts/prepare_full_data.py
+scripts/quick_test.py
+scripts/test_accuracy_report.py
+scripts/test_reverse_geocoding_detailed.py
+
 # JavaScript library (separate repository)
 geo_intel_offline_java_script/
 
