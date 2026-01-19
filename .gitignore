@@ -82,6 +82,13 @@ scripts/setup_js_repo.sh
 *secret*
 *private*
 
+# Internal/deployment documentation (not needed in public repo)
+DEPLOYMENT_GUIDE.md
+*DEPLOYMENT*.md
+*deployment*.md
+*DEPLOY*.md
+*deploy*.md
+
 # Confidential markdown files
 *confidential*.md
 *secret*.md
