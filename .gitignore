@@ -64,6 +64,24 @@ geo_intel_offline/data_dev/
 # JavaScript library (separate repository)
 geo_intel_offline_java_script/
 
+# Shell scripts (may contain sensitive info)
+*.sh
+QUICK_DEPLOY.sh
+scripts/upload_with_token.sh
+scripts/upload_to_pypi.sh
+scripts/setup_github_repo.sh
+scripts/setup_js_repo.sh
+
+# Environment and config files with sensitive data
+.env
+.env.local
+.env.*.local
+.pypirc
+*.conf
+*credentials*
+*secret*
+*private*
+
 # Confidential markdown files
 *confidential*.md
 *secret*.md
