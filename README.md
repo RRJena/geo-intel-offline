@@ -36,6 +36,7 @@ Whether you're building a mobile app that works offline, processing billions of 
 
 ## ✨ Features
 
+### Core Features
 - 🚀 **Fast**: < 1ms per lookup, < 15MB memory footprint
 - 📦 **Offline**: Zero network dependencies, works completely offline
 - 🎯 **Accurate**: 100% accuracy across 258 countries
@@ -45,6 +46,13 @@ Whether you're building a mobile app that works offline, processing billions of 
 - 🎨 **Clean API**: Unified function for forward and reverse geocoding
 - 🔧 **No Dependencies**: Pure Python, no native extensions
 - 💰 **Free Forever**: No API costs, no rate limits, no hidden fees
+
+### New Features (v1.0.3+)
+- 📏 **Distance Calculation**: Calculate distances between any two locations (coordinates, countries, continents) with automatic unit detection (km/miles)
+- 🎯 **Geo-fencing**: Monitor location proximity with state tracking (OUTSIDE, APPROACHING, INSIDE, LEAVING) and configurable alerts
+- 🎲 **Random Coordinates**: Generate random coordinates within countries, continents, or circular areas with point-in-polygon validation
+- 🔄 **Multiple Algorithms**: Haversine, Vincenty, and Spherical Law of Cosines for distance calculations
+- 🌍 **Smart Unit Detection**: Automatically detects km/miles based on country preferences (US, GB, LR, MM use miles)
 
 ## 📦 Installation
 
@@ -440,6 +448,130 @@ uk_coords = resolve("United Kingdom")  # Country name
 # The function automatically detects reverse geocoding from a single string argument
 ```
 
+### Example 7: Distance Calculation
+
+```python
+from geo_intel_offline import calculate_distance
+
+# Distance between coordinates (auto-detects unit based on countries)
+result = calculate_distance([40.7128, -74.0060], [34.0522, -118.2437])
+print(f"{result.distance:.2f} {result.unit}")  # "2448.50 mile" (US locations default to miles)
+
+# Distance between countries
+result = calculate_distance("United States", "Canada")
+print(f"{result.distance:.2f} {result.unit}")  # Auto-detects miles for US
+
+# Force unit
+result = calculate_distance("US", "CA", unit='km')
+print(f"{result.distance:.2f} {result.unit}")  # "2271.31 km"
+
+# Force calculation method
+result = calculate_distance([40.7128, -74.0060], [34.0522, -118.2437], method='vincenty')
+print(f"Method: {result.method}")  # "vincenty"
+
+# Distance between continents
+result = calculate_distance("North America", "Europe")
+print(f"{result.distance:.2f} {result.unit}")
+```
+
+### Example 8: Geo-fencing
+
+```python
+from geo_intel_offline import check_geofence, GeofenceMonitor, GeofenceConfig
+
+# Stateless check (one-off)
+result = check_geofence(
+    current_location=(40.7128, -74.0060),
+    destination=(40.7130, -74.0060),
+    radius=1000,  # 1000 meters
+    radius_unit='m'
+)
+print(f"Inside: {result.is_inside}, Distance: {result.distance:.2f} {result.unit}")
+print(f"State: {result.state}")  # OUTSIDE, APPROACHING, INSIDE, or LEAVING
+
+# Stateful monitoring with alerts
+config = GeofenceConfig(
+    radius=1000,
+    radius_unit='m',
+    approaching_threshold_percent=10.0,  # Alert when 10% closer
+    leaving_threshold_percent=10.0       # Alert when 10% farther
+)
+monitor = GeofenceMonitor(config)
+
+# Check location multiple times to track movement
+result1 = monitor.check((40.7128, -74.0060), (40.7130, -74.0060))
+print(f"State: {result1.state}, Alerts: {len(result1.alerts)}")
+
+# Move closer
+result2 = monitor.check((40.7129, -74.0060), (40.7130, -74.0060))
+for alert in result2.alerts:
+    print(f"Alert: {alert.alert_type} - {alert.distance:.2f} {alert.unit}")
+```
+
+### Example 9: Random Coordinates
+
+```python
+from geo_intel_offline import (
+    generate_random_coordinates_by_region,
+    generate_random_coordinates_by_area
+)
+
+# Generate random coordinates within a country
+result = generate_random_coordinates_by_region("United States", count=10, seed=42)
+print(f"Generated {result.total_generated} coordinates in {result.region}")
+for lat, lon in result.coordinates:
+    print(f"  ({lat:.4f}, {lon:.4f})")
+
+# Generate random coordinates within a continent
+result = generate_random_coordinates_by_region("Europe", count=5, seed=42)
+
+# Generate random coordinates within a circular area
+result = generate_random_coordinates_by_area(
+    center=(40.7128, -74.0060),  # NYC
+    radius=10,                    # 10 km
+    count=5,
+    radius_unit='km',
+    seed=42
+)
+print(f"Generated {result.total_generated} coordinates within {result.radius} {result.radius_unit}")
+
+# All generated coordinates are validated (point-in-polygon for regions)
+```
+
+### Example 10: Integration - All Features Together
+
+```python
+from geo_intel_offline import (
+    resolve,
+    calculate_distance,
+    check_geofence,
+    generate_random_coordinates_by_region
+)
+
+# 1. Generate random coordinates in a country
+coords = generate_random_coordinates_by_region("United States", count=3, seed=42)
+
+# 2. Resolve each coordinate to verify it's in the country
+for lat, lon in coords.coordinates:
+    result = resolve(lat, lon)
+    print(f"Coordinate ({lat:.4f}, {lon:.4f}) → {result.country} ({result.iso2})")
+
+# 3. Calculate distance between generated coordinates
+if len(coords.coordinates) >= 2:
+    dist = calculate_distance(coords.coordinates[0], coords.coordinates[1])
+    print(f"Distance: {dist.distance:.2f} {dist.unit}")
+
+# 4. Check if coordinates are within geofence
+if len(coords.coordinates) >= 2:
+    geofence = check_geofence(
+        coords.coordinates[0],
+        coords.coordinates[1],
+        radius=1000,
+        radius_unit='km'
+    )
+    print(f"Geofence check: {geofence.is_inside}, State: {geofence.state}")
+```
+
 ## 🎯 Use Cases
 
 ### 1. Mobile Applications
@@ -447,11 +579,17 @@ uk_coords = resolve("United Kingdom")  # Country name
 
 ```python
 # Works offline - no internet needed!
-from geo_intel_offline import resolve
+from geo_intel_offline import resolve, check_geofence
 
 def identify_user_country(lat, lon):
     result = resolve(lat, lon)
     return result.country  # Works even in airplane mode
+
+# Geo-fencing for location-based notifications
+def check_arrival(user_location, destination, radius_km=1):
+    result = check_geofence(user_location, destination, radius_km * 1000, 'm')
+    if result.is_inside:
+        send_notification("You've arrived!")
 ```
 
 ### 2. Data Processing & Analytics
@@ -529,6 +667,49 @@ def test_geocoding():
 # Reproducible research - same results every time
 # No API costs to worry about in grant proposals
 results = [resolve(lat, lon) for lat, lon in research_coordinates]
+
+# Generate test datasets with random coordinates
+from geo_intel_offline import generate_random_coordinates_by_region
+test_coords = generate_random_coordinates_by_region("United States", count=1000, seed=42)
+```
+
+### 9. Distance-Based Analytics & Routing
+**Calculate distances** between locations for analytics, routing optimization, or proximity analysis.
+
+```python
+from geo_intel_offline import calculate_distance
+
+# Calculate distances between multiple locations
+locations = [
+    ("New York", [40.7128, -74.0060]),
+    ("Los Angeles", [34.0522, -118.2437]),
+    ("Chicago", [41.8781, -87.6298])
+]
+
+for i, (name1, coords1) in enumerate(locations):
+    for name2, coords2 in locations[i+1:]:
+        dist = calculate_distance(coords1, coords2)
+        print(f"{name1} → {name2}: {dist.distance:.2f} {dist.unit}")
+```
+
+### 10. Location-Based Testing & Simulation
+**Generate test data** with random coordinates for testing location-based features, simulating user movements, or creating synthetic datasets.
+
+```python
+from geo_intel_offline import generate_random_coordinates_by_region, resolve
+
+# Generate test users in different countries
+test_users = []
+for country in ["United States", "United Kingdom", "Japan"]:
+    coords = generate_random_coordinates_by_region(country, count=100, seed=42)
+    for lat, lon in coords.coordinates:
+        result = resolve(lat, lon)
+        test_users.append({
+            "lat": lat,
+            "lon": lon,
+            "country": result.country,
+            "iso2": result.iso2
+        })
 ```
 
 ## 🔧 Advanced Usage
@@ -764,11 +945,83 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **GitHub**: https://github.com/RRJena/geo-intel-offline
 - **Issues**: https://github.com/RRJena/geo-intel-offline/issues
 
+## 🔄 How It Differs from Other Libraries
+
+### Comparison with Popular Geo Libraries
+
+| Feature | geo-intel-offline | geopy | reverse-geocoder | countrycode |
+|---------|-------------------|-------|------------------|-------------|
+| **Offline** | ✅ 100% offline | ❌ Requires internet | ✅ Offline | ✅ Offline |
+| **API Keys** | ❌ Not required | ❌ Required | ❌ Not required | ❌ Not required |
+| **Cost** | 💰 Free forever | 💰 Paid APIs | 💰 Free | 💰 Free |
+| **Distance Calculation** | ✅ Multiple algorithms | ✅ Yes | ❌ No | ❌ No |
+| **Geo-fencing** | ✅ State tracking | ❌ No | ❌ No | ❌ No |
+| **Random Coordinates** | ✅ By region/area | ❌ No | ❌ No | ❌ No |
+| **Unit Auto-detection** | ✅ km/miles by country | ❌ Manual | ❌ No | ❌ No |
+| **Accuracy** | ✅ 100% (258 countries) | ⚠️ Varies | ⚠️ Varies | ⚠️ Varies |
+| **Speed** | ✅ < 1ms | ⚠️ Network latency | ✅ Fast | ✅ Fast |
+| **Deterministic** | ✅ Always | ⚠️ May vary | ✅ Yes | ✅ Yes |
+| **Dependencies** | ✅ Zero | ⚠️ External APIs | ✅ Minimal | ✅ Minimal |
+
+### Key Advantages
+
+1. **All-in-One Solution**: Unlike other libraries that only do geocoding, `geo-intel-offline` provides:
+   - Forward geocoding (coordinates → country)
+   - Reverse geocoding (country → coordinates)
+   - Distance calculations with multiple algorithms
+   - Geo-fencing with state tracking
+   - Random coordinate generation
+
+2. **Smart Unit Detection**: Automatically detects whether to use kilometers or miles based on country preferences (US, GB, LR, MM use miles, others use km)
+
+3. **Multiple Distance Algorithms**: Choose from Haversine (fast), Vincenty (most accurate), or Spherical Law of Cosines, with automatic selection based on distance
+
+4. **Stateful Geo-fencing**: Track movement direction (approaching/leaving) with configurable alerts, not just simple inside/outside checks
+
+5. **Validated Random Coordinates**: Generate random coordinates within regions with point-in-polygon validation, ensuring all coordinates are actually within the specified area
+
+6. **Zero External Dependencies**: Works completely offline with no network calls, API keys, or external services
+
+7. **100% Accuracy**: Tested across all 258 countries with perfect accuracy
+
+### Limitations
+
+1. **Country-Level Only**: Provides country-level resolution, not city/address-level (by design for offline operation)
+
+2. **Static Data**: Uses pre-built polygon data from Natural Earth. For real-time boundary changes, data needs to be rebuilt
+
+3. **Memory Usage**: Loads all country polygons into memory (~15MB). For very memory-constrained environments, consider modular data loading
+
+4. **No Elevation Data**: Does not provide elevation or terrain information
+
+5. **No Time Zone Calculations**: Provides timezone identifiers but doesn't calculate current time or DST transitions
+
+6. **Distance Algorithms**: For very long distances (>10,000km), Vincenty may be slower than Haversine, but provides better accuracy
+
+### When to Use This Library
+
+✅ **Use `geo-intel-offline` when:**
+- You need offline functionality
+- You're processing large batches of coordinates
+- You need distance calculations with smart unit detection
+- You need geo-fencing with state tracking
+- You need to generate test data with random coordinates
+- You want to avoid API costs and rate limits
+- You need deterministic, reproducible results
+- You're building for edge devices or IoT
+
+❌ **Don't use `geo-intel-offline` when:**
+- You need city/street-level geocoding (use Google Maps API, OpenStreetMap Nominatim)
+- You need real-time boundary updates (use online services)
+- You need elevation or terrain data (use specialized elevation APIs)
+- You need address parsing or reverse geocoding to addresses (use specialized geocoding services)
+
 ## 🙏 Acknowledgments
 
 - Data source: [Natural Earth](https://www.naturalearthdata.com/)
 - Geohash implementation: Based on standard geohash algorithm
 - Point-in-Polygon: Ray casting algorithm
+- Distance algorithms: Haversine, Vincenty, and Spherical Law of Cosines
 
 ---
 
