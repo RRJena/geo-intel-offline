@@ -47,7 +47,7 @@ Whether you're building a mobile app that works offline, processing billions of 
 - 🔧 **No Dependencies**: Pure Python, no native extensions
 - 💰 **Free Forever**: No API costs, no rate limits, no hidden fees
 
-### New Features (v1.0.3+)
+### New Features (v1.5.0+)
 - 📏 **Distance Calculation**: Calculate distances between any two locations (coordinates, countries, continents) with automatic unit detection (km/miles)
 - 🎯 **Geo-fencing**: Monitor location proximity with state tracking (OUTSIDE, APPROACHING, INSIDE, LEAVING) and configurable alerts
 - 🎲 **Random Coordinates**: Generate random coordinates within countries, continents, or circular areas with point-in-polygon validation
